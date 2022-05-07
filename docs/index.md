@@ -1,6 +1,6 @@
 # Abstract
 
-In our project, we decided to inject human knowledge into LSTM models, so that we do not need to process a series of activities all at once. To that end, we can use LSTM just to process a window size of signal series to distinguish a single activity, and then apply human knowledge to it by decision tree or othersymbolic methods. As a result, that will make the LSTM model small and simple enough to deploy on edge devices. In our design, our project should achieve 90%+ accuracy for complex event detection and long range of window size to prove that the model is robust to long-term reasoning.
+In our project, we decided to inject human knowledge into convolutional LSTM models, so that we do not need to process a series of activities all at once. To that end, we can use convolutional LSTM just to process a window size of signal series to distinguish a single activity, and then apply human knowledge to it by decision tree or othersymbolic methods. As a result, that will make the convolutional LSTM model small and simple enough to deploy on edge devices. In our design, our project should achieve 90%+ accuracy for complex event detection and long range of window size to prove that the model is robust to long-term reasoning.
 
 # Team
 
