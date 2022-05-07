@@ -1,4 +1,3 @@
-My Drive
 # Project Proposal
 
 ## 1. Motivation & Objective
