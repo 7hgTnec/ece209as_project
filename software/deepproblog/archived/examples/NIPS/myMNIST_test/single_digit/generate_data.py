@@ -1,7 +1,7 @@
 import torchvision
 import random
 
-trainset = torchvision.datasets.MNIST(root='../../../data/MNIST', train=True, download=True)
+trainset = torchvision.datasets.MNIST(root='../../../../data/MNIST', train=True, download=True)
 testset = torchvision.datasets.MNIST(root='../../../data/MNIST', train=False, download=True)
 
 datasets = {'train': trainset, 'test': testset}

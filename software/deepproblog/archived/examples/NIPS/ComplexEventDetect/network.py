@@ -11,7 +11,7 @@ def count_backward(self, x, y):
 
 
 class Network(object):
-    def __init__(self, net, name, function, optimizer=None, model=None):
+    def __init__(self, net, name, function, optimizer=None, model=None): # here net = activity_net, function = neural_predicate
         self.evaluated = dict()
         self.net = net
         self.net.n = 0

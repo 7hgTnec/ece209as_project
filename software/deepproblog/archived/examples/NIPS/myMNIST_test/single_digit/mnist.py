@@ -4,9 +4,6 @@ import torchvision.transforms as transforms
 import torch.nn as nn
 from torch.autograd import Variable
 import numpy as np
-import os
-path = os.path.abspath(__file__)
-dir_path = os.path.dirname(path)
 
 class MNIST_Net(nn.Module):
     def __init__(self, N=10):
@@ -65,9 +62,11 @@ def neural_predicate(network, i):
     elif dataset == 'test':
         d, l = mnist_test_data[i]
     d = Variable(d.unsqueeze(0))
+    print(d.shape)
     output = network.net(d)
+    print(output.shape)
     return output.squeeze(0)
 
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5, ))])
-mnist_train_data = torchvision.datasets.MNIST(root=dir_path+'/../../../data/MNIST', train=True, download=True,transform=transform)
-mnist_test_data = torchvision.datasets.MNIST(root=dir_path+'/../../../data/MNIST', train=False, download=True,transform=transform)
+mnist_train_data = torchvision.datasets.MNIST(root='../../../../data/MNIST', train=True, download=True,transform=transform)
+mnist_test_data = torchvision.datasets.MNIST(root='../../../../data/MNIST', train=False, download=True,transform=transform)
