@@ -1,6 +1,6 @@
 from train import train_model
 from data_loader import load
-from examples.NIPS.MNIST.mnist  import MNIST_Net, neural_predicate
+from mnist import MNIST_Net, neural_predicate
 import torch
 from network import Network
 from model import Model
