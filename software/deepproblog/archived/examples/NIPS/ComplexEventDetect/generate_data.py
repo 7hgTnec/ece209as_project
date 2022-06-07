@@ -82,21 +82,22 @@ def gen_event():
 
     return data_id_lst, label_lst
 
-def gen_txt(data_id_lst, label_lst, f):
+def gen_txt(dataset_name, data_id_lst, label_lst, f):
     for idx in range(len(data_id_lst)):
         id_str = ""
         id = data_id_lst[idx]
         label = label_lst[idx]
         for i in range(5):
-            id_str += "train({}),".format(id[i])
+            id_str += "{}({}),".format(dataset_name, id[i])
             #print("CE([{}],{})".format(id_str[:-1], label[i]))
-            f.write("CE([{}],{}).\n".format(id_str[:-1], label[i]))
+            f.write("event([{}],{}).\n".format(id_str[:-1], label[i]))
 
-def gather_examples(filename):
+def gather_examples(dataset_name, filename):
     f = open(filename, 'w')
     data_id_lst, label_lst = gen_event()
-    gen_txt(data_id_lst, label_lst, f)
+    gen_txt(dataset_name, data_id_lst, label_lst, f)
     f.close()
     #print(len(data_id_lst))
     #(len(label_lst))
-gather_examples('CE_train_data.txt')
+gather_examples('train', 'CE_train_data.txt')
+gather_examples('test', 'CE_test_data.txt')
