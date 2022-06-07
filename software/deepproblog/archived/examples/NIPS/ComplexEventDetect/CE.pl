@@ -151,3 +151,15 @@ recognize_4(FromNode,String) :-
     arc_4(FromNode,Label,ToNode), 
     traverse(Label,String,NewString), 
     recognize_4(ToNode,NewString).
+
+isEvent(S) :- event_1(S).
+isEvent(S) :- event_2(S).
+isEvent(S) :- event_3(S).
+isEvent(S) :- event_4(S).
+
+event(S, ID) :- event_1(S), ID is 1.
+event(S, ID) :- event_2(S), ID is 2.
+event(S, ID) :- event_3(S), ID is 3.
+event(S, ID) :- event_4(S), ID is 4.
+
+event(S, ID) :- \+ isEvent(S), ID is 0.
