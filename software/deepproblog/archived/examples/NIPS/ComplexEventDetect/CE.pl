@@ -1,4 +1,4 @@
-nn(activity_net,[X],Y,[0,1,2,3]) :: activity(X,Y).
+nn(activity_net,[X],Y,[0,1,2,3,4,5,6,7,8,9]) :: activity(X,Y).
 
 initial_1(a0).
 final_1(a2).
@@ -27,9 +27,9 @@ event_1(Seq) :-
 
 recognize_1(Node,[]) :- 
     final_1(Node).
-recognize_1(FromNode,String) :- 
+recognize_1(FromNode,String) :-  
+    traverse(Label,String,NewString),
     arc_1(FromNode,Label,ToNode), 
-    traverse(Label,String,NewString), 
     recognize_1(ToNode,NewString).
 
 traverse(First,[First|Rest],Rest).
@@ -65,9 +65,9 @@ event_2(Seq) :-
 
 recognize_2(Node,[]) :- 
     final_2(Node).
-recognize_2(FromNode,String) :- 
+recognize_2(FromNode,String) :-  
+    traverse(Label,String,NewString),
     arc_2(FromNode,Label,ToNode), 
-    traverse(Label,String,NewString), 
     recognize_2(ToNode,NewString).
 
 
@@ -102,9 +102,9 @@ event_3(Seq) :-
 
 recognize_3(Node,[]) :- 
     final_3(Node).
-recognize_3(FromNode,String) :- 
-    arc_3(FromNode,Label,ToNode), 
-    traverse(Label,String,NewString), 
+recognize_3(FromNode,String) :-  
+    traverse(Label,String,NewString),
+    arc_3(FromNode,Label,ToNode),
     recognize_3(ToNode,NewString).
 
 initial_4(d0).
@@ -137,9 +137,9 @@ event_4(Seq) :-
 
 recognize_4(Node,[]) :- 
     final_4(Node).
-recognize_4(FromNode,String) :- 
-    arc_4(FromNode,Label,ToNode), 
-    traverse(Label,String,NewString), 
+recognize_4(FromNode,String) :-  
+    traverse(Label,String,NewString),
+    arc_4(FromNode,Label,ToNode),
     recognize_4(ToNode,NewString).
 
 isEvent(S) :- event_1(S).

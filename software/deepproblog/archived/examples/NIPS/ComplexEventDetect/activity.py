@@ -1,4 +1,5 @@
 import torch.nn as nn
+import torch
 from torch.autograd import Variable
 import numpy as np
 
@@ -31,25 +32,30 @@ class Activity_Net(nn.Module):
         
 
     def forward(self, x):
+    #   print(x.shape)
       x = self.conv(x)
-      # print(x.shape)
+    #   print(x.shape)
       x, _ = self.lstm(x)
-      # print(x.shape)
+    #   print(x.shape)
       x = self.fc(x)
-      # print(x.shape)
+    #   print(x.shape)
       return x
 
 def neural_predicate(network, i):
+    # print(i)
     dataset = str(i.functor)
     i = int(i.args[0])
     if dataset == 'train':
-        d, l = CE_train_data[i]
+        d = CE_train_data[i]
     elif dataset == 'test':
-        d, l = CE_test_data[i]
+        d = CE_test_data[i]
+    d = d.transpose((1,0))
+    d = torch.FloatTensor(d)
     d = Variable(d.unsqueeze(0))
-    
     output = network.net(d)
     return output.squeeze(0)
 
 CE_train_data = np.load('CE_data/all_data.npy')
 CE_test_data = np.load('CE_data/all_data.npy')
+# d = torch.FloatTensor(CE_train_data[0])
+# print(d.reshape(1,60,-1).shape)

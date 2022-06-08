@@ -45,7 +45,7 @@ def gen_event():
     act2 = [1, 3, 0, 2]
     # generate event index
     for j in range(4):
-        for i in range(2000):
+        for i in range(400):
             event_idx = []
             label = [0 for i in range(5)]
             for i in range(5):
@@ -59,7 +59,7 @@ def gen_event():
             event_id_lst.append(event_idx)
             label_lst.append(label)
     # generate label
-    for i in range(2000):
+    for i in range(400):
         event_idx = []
         label = [0 for i in range(5)]
         for i in range(5):
