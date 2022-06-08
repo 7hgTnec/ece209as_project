@@ -1,4 +1,4 @@
-nn(activity_net,[X],Y,[0,1,2,3,4,5,6,7,8,9]) :: activity(X,Y).
+nn(activity_net,[X],Y,[0,1,2,3]) :: activity(X,Y).
 
 initial_1(a0).
 final_1(a2).
