@@ -2,6 +2,8 @@ import torchvision
 import random
 import numpy as np
 
+
+
 trainset = np.load('CE_data/all_data.npy')
 testset = np.load('CE_data/all_data.npy')
 # print(trainset[0])
@@ -36,7 +38,7 @@ datasets = {'train': trainset, 'test': testset}
 # gather_examples('train', 'train_data.txt')
 # gather_examples('test', 'test_data.txt')
 
-def gen_event():
+def gen_event(number):
     length = 5
     event_id_lst = []
     label_lst = []
@@ -45,7 +47,7 @@ def gen_event():
     act2 = [1, 3, 0, 2]
     # generate event index
     for j in range(4):
-        for i in range(400):
+        for i in range(number):
             event_idx = []
             label = [0 for i in range(5)]
             for i in range(5):
@@ -59,7 +61,7 @@ def gen_event():
             event_id_lst.append(event_idx)
             label_lst.append(label)
     # generate label
-    for i in range(400):
+    for i in range(number):
         event_idx = []
         label = [0 for i in range(5)]
         for i in range(5):
@@ -90,14 +92,15 @@ def gen_txt(dataset_name, data_id_lst, label_lst, f):
         for i in range(5):
             id_str += "{}({}),".format(dataset_name, id[i])
             #print("CE([{}],{})".format(id_str[:-1], label[i]))
+            if i == 0: continue
             f.write("event([{}],{}).\n".format(id_str[:-1], label[i]))
 
-def gather_examples(dataset_name, filename):
+def gather_examples(dataset_name, filename, number):
     f = open(filename, 'w')
-    data_id_lst, label_lst = gen_event()
+    data_id_lst, label_lst = gen_event(number)
     gen_txt(dataset_name, data_id_lst, label_lst, f)
     f.close()
     #print(len(data_id_lst))
     #(len(label_lst))
-gather_examples('train', 'CE_train_data.txt')
-gather_examples('test', 'CE_test_data.txt')
+gather_examples('train', 'CE_train_data.txt', 10000)
+gather_examples('test', 'CE_test_data.txt',100)
