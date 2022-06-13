@@ -18,20 +18,24 @@ def signal_handler(sig, frame):
 
 
 def train(model, optimizer, query, eps=1e-8):
+    #print("\n\n\n=====================================================")
     loss = 0
     pos = True
     if type(query) is tuple:
         pos = query[1]
         query = query[0]
     ground = model.solve(query)
+    #print("query ", query)
     for k in ground:
         if k == query:
+            #print("ground ", ground[k])
             p,d = ground[k]
             break
     if pos:
         if p <= 0:
             print('zero probability query:', query, p)
         loss_grad = -1.0/(p+eps)
+        #print("p value ",p)
         loss += -math.log(p+eps)
     else:
         loss_grad = 1.0/(1.0-p+eps)
@@ -71,6 +75,7 @@ def train_model(model,queries,nr_epochs,optimizer, loss_function = train, test_i
             if interrupt:
                 break
             loss = loss_function(model, optimizer, q)
+            #print("step loss: ", loss, "Label: ", q)
             accumulated_loss += loss
             optimizer.step()
             if snapshot_iter and i % snapshot_iter == 0:

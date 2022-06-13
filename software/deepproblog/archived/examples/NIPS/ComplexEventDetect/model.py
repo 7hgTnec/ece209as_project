@@ -102,6 +102,7 @@ class Model(object):
         return solution
 
     def accuracy(self, data, nr_output=1, test=False, verbose=False):
+        #print("\n\n=================================")
         correct = 0
         for d in data:
             args = list(d.args)
@@ -109,6 +110,8 @@ class Model(object):
             q = d(*args)
             out = self.solve(q, None, test)
             out = max(out, key=lambda x: out[x][0])
+            #print("out: ", out)
+            #print("d: ", d)
             if out == d:
                 correct += 1
             else:
