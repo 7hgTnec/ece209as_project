@@ -25,15 +25,19 @@ Our project is built using python and based on several package, such as numpy, p
 
 # 2. Related Work
 •	STLnet
+
 A model to predict future sequences with constraints/rules satisfied. Use a symbolic teacher network to guide the student neural network learning.
 
 o	Pros: the teacher network can ensure 100% satisfaction rate of rules
+
 o	Cons: solves only regression problems, computationally heavy
 
 •	Neuroplex 
+
 An end-to-end model to detect complex events. Use knowledge distillation to convert the pattern detection logic module to a neural network.
 
 o	Pros: end-to-end classification of various complex events
+
 o	Cons: counting not considered
 
 # 3. Technical Approach
