@@ -41,6 +41,23 @@ o	Pros: end-to-end classification of various complex events
 o	Cons: counting not considered
 
 # 3. Technical Approach
+- Data Preprocessing & Dataset Construction
+  
+  blabla
+
+- Complex Event Detection
+  
+  blabla
+  
+  - DeepProbLog Pipeline
+    
+    scs
+    
+    ![DPL](https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/DPL-pipeline.png)
+
+  - Finite State Machine  
+    
+    cscs
 
 # 4. Evaluation and Results
 
