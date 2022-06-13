@@ -37,7 +37,23 @@ Our project is built using python and based on several package, such as numpy, p
 # 3. Technical Approach
 - Data Preprocessing & Dataset Construction
   
-  blabla
+  Our dataset is from The Third Nurse Care Activity Recognition Challenge. It made up of accelerometer data collected by nurses and caregivers with smartphone. There are in total 27 activities such as excretion, oral care and organization of medications. However, data and label were from two separate files so we have to first match the data with labels. To do so, we convert datetime to timestamps and filter out meaningless data. To speed up the matching process, we implemented binary search using python. After that, we assume the sample frequency is around 1Hz so we set the segment size as 60. We also did normalization to compare the performance. The amount of data from different labels is shown below. We chose activity 2,4,12,14 as target activities and activity 9,10,13,16,19 as other activities. 
+  
+  Then we defined complex events as a set of single activity. We defined five patterns of complex events as shown below. For example, event 1 is activity 2 follower by activity 4, and other activities randomly happened before, between or after them. Once the pattern is detected, the label will show which pattern this event is.
+
+  o	Event0: xxxxx (x is from[9,10,13,16,19])
+
+  o	Event1: 2/xx?/4
+
+  o	Event2: 12/xx?/14
+
+  o	Event3: 14/xx?/2
+
+  o	Event4: 4/xx?/12
+
+  The last step was generated training dataset for DeepProbLog. We gathered all the data in an numpy array and used index to access it. As shown below, the number inside the parenthesis is the index of the data, and the number in the end of  the line is the label. 
+  
+
 
 - Complex Event Detection
   
