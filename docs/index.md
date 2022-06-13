@@ -11,6 +11,6 @@ In our project, we decided to inject human knowledge into convolutional LSTM mod
 # Required Submissions
 
 * [Proposal](https://github.com/7hgTnec/ece209as_project/blob/main/docs/proposal.md)
-* [Midterm Checkpoint Presentation Slides](http://)
-* [Final Presentation Slides](http://)
-* [Final Report](report)
+* [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/18IcK4QDl5yYhPo6qwylZUW1ROw1Au8vDhAAk5Ylnbbk/edit#slide=id.g116c54ca3fb_2_121)
+* [Final Presentation Slides](https://docs.google.com/presentation/d/18IcK4QDl5yYhPo6qwylZUW1ROw1Au8vDhAAk5Ylnbbk/edit?pli=1#slide=id.g132d07ad5bb_0_0)
+* [Final Report](https://github.com/7hgTnec/ece209as_project/blob/main/docs/report.md)
