@@ -19,7 +19,7 @@ for l in lines:
     if l[-4] == '0':
         train_0 += 1
 print((train_0/len(lines)))
-p = (1 - (train_0/len(lines)))/4
+p = ((1 - (train_0/len(lines)))/4)/(train_0/len(lines))
 print(p)
 
 for l in lines:  
@@ -35,7 +35,7 @@ for l in lines:
     if l[-4] == '0':
         test_0 += 1
 
-p = (1 - (test_0/len(lines)))/4
+p = ((1 - (test_0/len(lines)))/4)/(test_0/len(lines))
 print(p)
 
 for l in lines:

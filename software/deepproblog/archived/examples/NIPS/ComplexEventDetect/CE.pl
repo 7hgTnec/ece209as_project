@@ -1,4 +1,4 @@
-nn(activity_net,[X],Y,[0,1,2,3]) :: activity(X,Y).
+nn(activity_net,[X],Y,[0,1,2,3,4]) :: activity(X,Y).
 
 initial_1(a0).
 final_1(a2).
@@ -8,17 +8,21 @@ arc_1(a0,A,a1) :- activity(A,Y), Y is 0.
 arc_1(a0,A,a0) :- activity(A,Y), Y is 1.
 arc_1(a0,A,a0) :- activity(A,Y), Y is 2.
 arc_1(a0,A,a0) :- activity(A,Y), Y is 3.
+arc_1(a0,A,a0) :- activity(A,Y), Y is 4.
+
 
 arc_1(a1,A,a2) :- activity(A,Y), Y is 1.
 
 arc_1(a1,A,a1) :- activity(A,Y), Y is 0.
 arc_1(a1,A,a1) :- activity(A,Y), Y is 2.
 arc_1(a1,A,a1) :- activity(A,Y), Y is 3.
+arc_1(a1,A,a1) :- activity(A,Y), Y is 4.
 
 arc_1(a2,A,a0) :- activity(A,Y), Y is 0.
 arc_1(a2,A,a0) :- activity(A,Y), Y is 1.
 arc_1(a2,A,a0) :- activity(A,Y), Y is 2.
 arc_1(a2,A,a0) :- activity(A,Y), Y is 3.
+arc_1(a2,A,a0) :- activity(A,Y), Y is 4.
 
 
 event_1(Seq) :- 
@@ -43,6 +47,7 @@ arc_2(b0,A,b1) :- activity(A,Y), Y is 2.
 arc_2(b0,A,b0) :- activity(A,Y), Y is 0.
 arc_2(b0,A,b0) :- activity(A,Y), Y is 1.
 arc_2(b0,A,b0) :- activity(A,Y), Y is 3.
+arc_2(b0,A,b0) :- activity(A,Y), Y is 4.
 
 
 arc_2(b1,A,b2) :- activity(A,Y), Y is 3.
@@ -50,12 +55,14 @@ arc_2(b1,A,b2) :- activity(A,Y), Y is 3.
 arc_2(b1,A,b1) :- activity(A,Y), Y is 0.
 arc_2(b1,A,b1) :- activity(A,Y), Y is 1.
 arc_2(b1,A,b1) :- activity(A,Y), Y is 2.
+arc_2(b1,A,b1) :- activity(A,Y), Y is 4.
 
 
 arc_2(b2,A,b0) :- activity(A,Y), Y is 0.
 arc_2(b2,A,b0) :- activity(A,Y), Y is 1.
 arc_2(b2,A,b0) :- activity(A,Y), Y is 2.
 arc_2(b2,A,b0) :- activity(A,Y), Y is 3.
+arc_2(b2,A,b0) :- activity(A,Y), Y is 4.
 
 
 
@@ -81,6 +88,7 @@ arc_3(c0,A,c1) :- activity(A,Y), Y is 3.
 arc_3(c0,A,c0) :- activity(A,Y), Y is 0.
 arc_3(c0,A,c0) :- activity(A,Y), Y is 1.
 arc_3(c0,A,c0) :- activity(A,Y), Y is 2.
+arc_3(c0,A,c0) :- activity(A,Y), Y is 4.
 
 
 arc_3(c1,A,c2) :- activity(A,Y), Y is 0.
@@ -88,11 +96,13 @@ arc_3(c1,A,c2) :- activity(A,Y), Y is 0.
 arc_3(c1,A,c1) :- activity(A,Y), Y is 1.
 arc_3(c1,A,c1) :- activity(A,Y), Y is 2.
 arc_3(c1,A,c1) :- activity(A,Y), Y is 3.
+arc_3(c1,A,c1) :- activity(A,Y), Y is 4.
 
 arc_3(c2,A,c0) :- activity(A,Y), Y is 0.
 arc_3(c2,A,c0) :- activity(A,Y), Y is 1.
 arc_3(c2,A,c0) :- activity(A,Y), Y is 2.
 arc_3(c2,A,c0) :- activity(A,Y), Y is 3.
+arc_3(c2,A,c0) :- activity(A,Y), Y is 4.
 
 
 
@@ -116,6 +126,7 @@ arc_4(d0,A,d1) :- activity(A,Y), Y is 1.
 arc_4(d0,A,d0) :- activity(A,Y), Y is 0.
 arc_4(d0,A,d0) :- activity(A,Y), Y is 2.
 arc_4(d0,A,d0) :- activity(A,Y), Y is 3.
+arc_4(d0,A,d0) :- activity(A,Y), Y is 4.
 
 
 arc_4(d1,A,d2) :- activity(A,Y), Y is 2.
@@ -123,11 +134,13 @@ arc_4(d1,A,d2) :- activity(A,Y), Y is 2.
 arc_4(d1,A,d1) :- activity(A,Y), Y is 0.
 arc_4(d1,A,d1) :- activity(A,Y), Y is 1.
 arc_4(d1,A,d1) :- activity(A,Y), Y is 3.
+arc_4(d1,A,d1) :- activity(A,Y), Y is 4.
 
 arc_4(d2,A,d0) :- activity(A,Y), Y is 0.
 arc_4(d2,A,d0) :- activity(A,Y), Y is 1.
 arc_4(d2,A,d0) :- activity(A,Y), Y is 2.
 arc_4(d2,A,d0) :- activity(A,Y), Y is 3.
+arc_4(d2,A,d0) :- activity(A,Y), Y is 4.
 
 
 

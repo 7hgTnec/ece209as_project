@@ -4,7 +4,7 @@ from torch.autograd import Variable
 import numpy as np
 
 class Activity_Net(nn.Module):
-    def __init__(self, n_class=4, drop_out=0.5):
+    def __init__(self, n_class=5, drop_out=0.5):
       super().__init__()
       self.n_class = n_class
       self.conv = nn.Sequential(

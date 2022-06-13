@@ -17,9 +17,9 @@ with open('CE.pl') as f:
 
 network = Activity_Net()
 net = Network(network, 'activity_net', neural_predicate)
-net.optimizer = torch.optim.Adam(network.parameters(), lr=0.005)
+net.optimizer = torch.optim.Adam(network.parameters(), lr=0.001)
 model = Model(problog_string, [net], caching=False)
 optimizer = Optimizer(model, 2)
 
 # train_model(model, queries, 1, optimizer, test_iter=1000, test=lambda x: x.accuracy(test_queries, test=True), snapshot_iter=10000)
-train_model(model, queries, 1, optimizer, test_iter=5000, test=lambda x: x.accuracy(test_queries, test=True), snapshot_iter=10000)
+train_model(model, queries, 1, optimizer, test_iter=20000, test=lambda x: x.accuracy(test_queries, test=True), snapshot_iter=50000)
