@@ -53,11 +53,11 @@ Our project is built using python and based on several package, such as numpy, p
 
   -	Event4: 4/xx?/12
 
-  <img src="https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/event_example.png" style="zoom:50%" />
+  <img src="https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/event_example.png" width=60% />
   
   The last step was generated training dataset for DeepProbLog. We gathered all the data in an numpy array and used index to access it. As shown below, the number inside the parenthesis is the index of the data, and the number in the end of the line is the label. 
   
-  <img src="https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/train_data_set_text.png" style="zoom:50%" />
+  <img src="https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/train_data_set_text.png" width=60% />
 
 
 - **DeepProbLog-based Complex Event Detection**
