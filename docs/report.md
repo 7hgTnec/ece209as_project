@@ -74,7 +74,7 @@ Our project is built using python and based on several package, such as numpy, p
 
   - Finite State Machine  
     
-    In our implementation, we used DeepProblog to implement the complex event detection. The neural model will predicate the label of signal activities with the output format being an array of probability. And the FSM implemented in Problog can accept a fact with probabilities. Thus, in our DeepProblog solution, we use 'query' to input the ground truth (the event label) of a sequency of activity. And FSM will calculate the probability based on the neural model's prediction. And the difference can be used to update the model.  
+    In our implementation, we used DeepProblog to implement the complex event detection. The neural model will predicate the label of signal activities with the output format being an array of probability. And the FSM implemented in Problog can accept a fact with probabilities. Thus, in our DeepProblog solution, we use 'query' to input the ground truth (the event label) of a sequency of activity. FSM will calculate the probability based on the neural model's prediction, and the difference can be used to update the model.  
 
     To describe the FSM in Problog, we use 'fact' to denote the Initial and Final state; Use 'rule' to define the transfer condition; Use a recursion rule to traverse through the whole FSM.  
 
@@ -102,3 +102,7 @@ In the future, we need to improve accuracy by using better accelerometer dataset
 <div id="ref-1"></div>
 
 [1]Robin Manhaeve, Sebastijan Dumancic, Angelika Kimmig, Thomas Demeester, Luc De Raedt: DeepProbLog: Neural Probabilistic Logic Programming. NeurIPS 2018: 3753-3763 (paper)
+[2]Inoue, S., Lago, P., Hossain, T., Mairittha, T., & Mairittha, N. (2019). Integrating activity recognition and nursing care records: The system, deployment, and a verification study. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 3(3), 1-24.
+[3]Vilamala, M. R., Taylor, H., Xing, T., Garcia, L., Srivastava, M., Kaplan, L., ... & Cerutti, F. (2020). A hybrid neuro-symbolic approach for complex event processing. arXiv preprint arXiv:2009.03420.
+[4]Xing, T., Garcia, L., Vilamala, M. R., Cerutti, F., Kaplan, L., Preece, A., & Srivastava, M. (2020, November). Neuroplex: learning to detect complex events in sensor networks through knowledge injection. In Proceedings of the 18th Conference on Embedded Networked Sensor Systems (pp. 489-502).
+[5]Third Nurse Care Activity Recognition Challenge. https://abc-research.github.io/nurse2021/data/
