@@ -39,6 +39,8 @@ Our project is built using python and based on several package, such as numpy, p
   
   Our dataset is from The Third Nurse Care Activity Recognition Challenge. It made up of accelerometer data collected by nurses and caregivers with smartphone. There are in total 27 activities such as excretion, oral care and organization of medications. However, data and label were from two separate files so we have to first match the data with labels. To do so, we convert datetime to timestamps and filter out meaningless data. To speed up the matching process, we implemented binary search using python. After that, we assume the sample frequency is around 1Hz so we set the segment size as 60. We also did normalization to compare the performance. The amount of data from different labels is shown below. We chose activity 2,4,12,14 as target activities and activity 9,10,13,16,19 as other activities. 
   
+  ![DPL](https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/activity_sheet.png)
+  
   Then we defined complex events as a set of single activity. We defined five patterns of complex events as shown below. For example, event 1 is activity 2 follower by activity 4, and other activities randomly happened before, between or after them. Once the pattern is detected, the label will show which pattern this event is.
 
   -	Event0: xxxxx (x is from[9,10,13,16,19])
@@ -50,9 +52,9 @@ Our project is built using python and based on several package, such as numpy, p
   -	Event3: 14/xx?/2
 
   -	Event4: 4/xx?/12
-
-  The last step was generated training dataset for DeepProbLog. We gathered all the data in an numpy array and used index to access it. As shown below, the number inside the parenthesis is the index of the data, and the number in the end of  the line is the label. 
-  
+  ![DPL](https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/event_example.png)
+  The last step was generated training dataset for DeepProbLog. We gathered all the data in an numpy array and used index to access it. As shown below, the number inside the parenthesis is the index of the data, and the number in the end of the line is the label. 
+  ![DPL](https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/train_data_set_text.png)
 
 
 - **DeepProbLog-based Complex Event Detection**
