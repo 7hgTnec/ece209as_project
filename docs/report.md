@@ -35,35 +35,42 @@ Our project is built using python and based on several package, such as numpy, p
   - Cons: counting not considered
 
 # 3. Technical Approach
-- Data Preprocessing & Dataset Construction
+- **Data Preprocessing & Dataset Construction**
   
   Our dataset is from The Third Nurse Care Activity Recognition Challenge. It made up of accelerometer data collected by nurses and caregivers with smartphone. There are in total 27 activities such as excretion, oral care and organization of medications. However, data and label were from two separate files so we have to first match the data with labels. To do so, we convert datetime to timestamps and filter out meaningless data. To speed up the matching process, we implemented binary search using python. After that, we assume the sample frequency is around 1Hz so we set the segment size as 60. We also did normalization to compare the performance. The amount of data from different labels is shown below. We chose activity 2,4,12,14 as target activities and activity 9,10,13,16,19 as other activities. 
   
   Then we defined complex events as a set of single activity. We defined five patterns of complex events as shown below. For example, event 1 is activity 2 follower by activity 4, and other activities randomly happened before, between or after them. Once the pattern is detected, the label will show which pattern this event is.
 
-  o	Event0: xxxxx (x is from[9,10,13,16,19])
+  -	Event0: xxxxx (x is from[9,10,13,16,19])
 
-  o	Event1: 2/xx?/4
+  -	Event1: 2/xx?/4
 
-  o	Event2: 12/xx?/14
+  -	Event2: 12/xx?/14
 
-  o	Event3: 14/xx?/2
+  -	Event3: 14/xx?/2
 
-  o	Event4: 4/xx?/12
+  -	Event4: 4/xx?/12
 
   The last step was generated training dataset for DeepProbLog. We gathered all the data in an numpy array and used index to access it. As shown below, the number inside the parenthesis is the index of the data, and the number in the end of  the line is the label. 
   
 
 
-- Complex Event Detection
+- **DeepProbLog-based Complex Event Detection**
   
-  blabla
+  We choose to use the DeepProbLog framework for complex event detection. DeepProbLog is a neural probabilistic logic programming language that allows users to create neuro-symbolic architectures which can be trained and evaluated in an end-to-end manner. Users can define their own neural network structures and logic rules, and then use the DeepProbLog to infer the answers of their queries. Here we have designed our own DeepProbLog architecture.
   
-  - DeepProbLog Pipeline
-    
-    scs
-    
+  - Pipeline  
+
+    The figure below shows the DeepProbLog pipeline. The input to the pipeline is a sequence of IMU data for activities of variable lengths. In the figure, we take the example of an input sequence of 5 minutes long. We split the input sequence into segments, and in this example the segement size is 60 seconds, so the input is divided into 5 segements. Then each segment serves as the input to the neural predicate named Activity_Net, which is a classifier network that outputs the probability of each activity class. Each output from the neural network is then passed to the Finite State Machine for complex event pattern detection. If the current and past segements of activity match the pattern of one complex event, then the FSM will output the label of the matched event immediately. Hence, we can get a label sequence whose length is same as the number of segments, and in this example the length is 5. The detailed parts of the neural predicate and the FSM are included in the next part. 
+
     ![DPL](https://raw.githubusercontent.com/7hgTnec/ece209as_project/main/docs/media/DPL-pipeline.png)
+  - Neural Predicate  
+    
+    Our neural predicate is written as
+
+        nn(activity_net,[X],Y,[0,1,2,3,4]) :: activity(X,Y).
+
+    The input is one segment from the sequence (60s in our example), and the output is the classification probability for five activity classes. It uses the neural network Activity_Net, which is composed of one CNN layer, one bidrectional LSTM layer and one MLP layer. Batchnorm layers and dropout layers are used to avoid gradient explosion and model overfitting.
 
   - Finite State Machine  
     
