@@ -8,8 +8,7 @@
 * [References](#6-references)
 
 # Abstract
-
-Provide a brief overview of the project objhectives, approach, and results.
+To help health care workers determine whether their behavior is in violation or not, we design a behavior recognition system that can detect pre-defined complex events. The system is built using DeepProbLog, a probabilistic logic programming language that allows users to incorporates deep learning models as neural predicates with user-defined logic rules. We design a neural predicate to detect activity class and use the finite state machines as logic rules to detect complex event patterns. To evaluate our archtecture, we preprocess the IMU data from a nursing dataset and construct complex events as training data. The pipeline works well and can achieve a query accuracy over 21.5%. Though the accuracy is not high enough, we can observe the trend of convergence in the loss and accuracy plots.
 
 # 1. Introduction
 
