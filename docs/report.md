@@ -83,17 +83,20 @@ Our project is built using python and based on several package, such as numpy, p
 # 4. Evaluation and Results
 We generated the 5 different type train and test events which contain arbitrarily length activities between 2-5. And we performed the evaluation under different training examples as shown in the following picture. The left graph is the loss value during training. And the right graph is the accuracy during training.
 
-o   Training example: 50,000; Learning rate: 0.001;  
+- Training example: 50,000; Learning rate: 0.001;  
 
   ![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result1.jpg)  
 
-o   Training example: 250,000; Learning rate: 0.001;  
+- Training example: 250,000; Learning rate: 0.001;  
 
   ![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result2.jpg)  
 
 From the graph we can see that, in our implementation. The loss can convergence and the accuracy increases at the beginning. However, there exist a bottlenecks with the training processing. And we think it may be caused by insufficient training data, large learning rate, etc. And we will discuss that in the next section.
 
 # 5. Discussion and Conclusions
+In general, our DeepProbLog architecture works quite good. We can observe the trend of convergence as we add more training data. However, there are some problems. First, the accuracy of the complex event detection is low. This may due to the noisy IMU data from the nursing dataset, and insufficient training data for complex event. Second, the training is very time consuming, mainly because of the long initialization time for logic circuits, and DeepProbLog doesn't support batch training.
+
+In the future, we need to improve accuracy by using better accelerometer dataset. We should also increase the length of the input activity sequence. We can also add the training data case where simultaneous events happen at the same time, e.g., if event 1 and 2 happens at the same time segment, output will be {1,2}, although our method should already support this case. Also, we can consider continuous complex event detection other than simultaneous one.
 
 # 6. References
 <div id="ref-1"></div>
