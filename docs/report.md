@@ -74,9 +74,24 @@ Our project is built using python and based on several package, such as numpy, p
 
   - Finite State Machine  
     
-    cscs
+    In our implementation, we used DeepProblog to implement the complex event detection. The neural model will predicate the label of signal activities with the output format being an array of probability. And the FSM implemented in Problog can accept a fact with probabilities. Thus, in our DeepProblog solution, we use 'query' to input the ground truth (the event label) of a sequency of activity. And FSM will calculate the probability based on the neural model's prediction. And the difference can be used to update the model.  
+
+To describe the FSM in Problog, we use 'fact' to denote the Initial and Final state; Use 'rule' to define the transfer condition; Use a recursion rule to traverse through the whole FSM.  
+
+![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/FSM.jpg)
 
 # 4. Evaluation and Results
+We generated the 5 different type train and test events which contain arbitrarily length activities between 2-5. And we performed the evaluation under different training examples as shown in the following picture. The left graph is the loss value during training. And the right graph is the accuracy during training.
+
+o   Training example: 50,000; Learning rate: 0.001;  
+
+![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result1.jpg)  
+
+o   Training example: 250,000; Learning rate: 0.001;  
+
+![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result2.jpg)  
+
+From the graph we can see that, in our implementation. The loss can convergence and the accuracy increases at the beginning. However, there exist a bottlenecks with the training processing. And we think it may be caused by insufficient training data, large learning rate, etc. And we will discuss that in the next section.
 
 # 5. Discussion and Conclusions
 
