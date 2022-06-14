@@ -17,7 +17,7 @@ In the medical process, health care workers need to strictly comply with the rel
 
 The existing complex event processing approaches that can use subsymbolic data can be divided into three types. The first is using pre-trained neural networks to extract the symbolic information. In this way, High-bandwidth data is transformed into symbolic information, easy to define rules on it. However, creating training dataset takes much effort. Sometimes we only have training labels for when the complex events are happening, and not for the simple events. The second is to view the whole complex event processing problem as a classification problem, which is a purely statistical approach. This approach removes the manual definitions of complex events, and instead managing to train the neural network to identify those definitions when it learns to classify the subsymbolic data. We can just use a LSTM or a C3D to implement this approach. However, training such neural network need very large amounts of data. The third is neuro-symbolic approach. This is done by dividing the problem into two levels: low-level perception and high-level reasoning. The high-level reasoning is responsible for detecting the complex events based on manually defined rules, while the low-level perception is responsible for parsing the subsymbolic data into a set of classes that can be used when defining the rules. However, High level reasoning requires a significant amount of work, and it is not flexible.
 
-To account the issues mentioned above, we used DeepProbLog, which is a probabilistic logic programming language that incorporates deep learning by means of neural predicates, to inject logic rules to achieve complex event detection. Our approach can also be applied to signal sequence of flexible length by using Finite State Machine to detect patterns. In this way, our approach can detect simultaneous complex events using real-time signals with infinite length.
+To account the issues mentioned above, we used DeepProbLog, which is a probabilistic logic programming language that incorporates deep learning by means of neural predicates[<sup>1</sup>](#ref-1), to inject logic rules to achieve complex event detection. Our approach can also be applied to signal sequence of flexible length by using Finite State Machine to detect patterns. In this way, our approach can detect simultaneous complex events using real-time signals with infinite length.
 
 There were mainly two challenges we were facing. The first challenge is constructing training set. The raw data was noisy and incomplete, and it was also not labeled. In addition, we need to construct training dataset reasonably. The second challenge is successfully using DeepProbLog to build a Finite State Machine.
 
@@ -76,23 +76,26 @@ Our project is built using python and based on several package, such as numpy, p
     
     In our implementation, we used DeepProblog to implement the complex event detection. The neural model will predicate the label of signal activities with the output format being an array of probability. And the FSM implemented in Problog can accept a fact with probabilities. Thus, in our DeepProblog solution, we use 'query' to input the ground truth (the event label) of a sequency of activity. And FSM will calculate the probability based on the neural model's prediction. And the difference can be used to update the model.  
 
-To describe the FSM in Problog, we use 'fact' to denote the Initial and Final state; Use 'rule' to define the transfer condition; Use a recursion rule to traverse through the whole FSM.  
+    To describe the FSM in Problog, we use 'fact' to denote the Initial and Final state; Use 'rule' to define the transfer condition; Use a recursion rule to traverse through the whole FSM.  
 
-![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/FSM.jpg)
+    ![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/FSM.jpg)
 
 # 4. Evaluation and Results
 We generated the 5 different type train and test events which contain arbitrarily length activities between 2-5. And we performed the evaluation under different training examples as shown in the following picture. The left graph is the loss value during training. And the right graph is the accuracy during training.
 
 o   Training example: 50,000; Learning rate: 0.001;  
 
-![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result1.jpg)  
+  ![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result1.jpg)  
 
 o   Training example: 250,000; Learning rate: 0.001;  
 
-![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result2.jpg)  
+  ![image](https://github.com/7hgTnec/ece209as_project/blob/main/docs/media/result2.jpg)  
 
 From the graph we can see that, in our implementation. The loss can convergence and the accuracy increases at the beginning. However, there exist a bottlenecks with the training processing. And we think it may be caused by insufficient training data, large learning rate, etc. And we will discuss that in the next section.
 
 # 5. Discussion and Conclusions
 
 # 6. References
+<div id="ref-1"></div>
+
+[1]Robin Manhaeve, Sebastijan Dumancic, Angelika Kimmig, Thomas Demeester, Luc De Raedt: DeepProbLog: Neural Probabilistic Logic Programming. NeurIPS 2018: 3753-3763 (paper)
